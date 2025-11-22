@@ -154,7 +154,7 @@ Example: `Other brand names: Panadol`
 
 Title-based extraction is fast and reliable, so it's included by default.
 
-A slower, more exhaustive implementation was tested (scanning the full page for "Brand names:" patterns), but it added significant latency across ~300 medicines. To keep extraction time within the 2–4 hour limit, only title-based extraction is used here.
+A slower, more exhaustive implementation was tested (scanning the page for "Brand names:" patterns), but it added significant latency across ~300 medicines. To keep extraction time within the 2–4 hour limit, only title-based extraction is used here.
 
 The architecture supports adding deeper brand extraction later.
 
