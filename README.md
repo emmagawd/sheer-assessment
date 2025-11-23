@@ -257,13 +257,25 @@ npm test
 
 ## Future Enhancements
 
-1. **Replace scraping with official NHS API ingestion** (if available)
-2. **Request interception** to block images/styles and speed up pages
-3. **CLI interface** with runtime flags (--limit, --concurrency, --output, --headless)
-4. **Incremental re-scrape mode**
-5. **robots.txt & ToS compliance automation**
-6. **CI pipeline** to run scraper on schedules
-7. **Content normalization pipeline** via post-processing layer (e.g. rule-based or LLM-assisted)
+**API ingestion** (if NHS provides one) — replace scraping entirely for faster, cleaner, schema-stable data.
+
+**Request interception** — block images, fonts, and analytics to cut page load time dramatically.
+
+**Smarter topic navigation** — reuse a single page instance or parallelize topic fetches within a safe concurrency cap.
+
+**CLI configuration** — add flags (--limit, --concurrency, --output, --headless) instead of editing constants.
+
+**Incremental mode** — re-scrape only medicines whose content or review dates changed.
+
+**robots.txt & ToS checks** — automatic compliance before running.
+
+**CI pipeline** — scheduled runs with automated PRs showing diffs.
+
+**Normalization pass** — optional post-processing to map NHS-specific section titles into a canonical schema.
+
+**Broader topic coverage** — include additional sections (pregnancy, interactions, FAQs) by expanding the priority list.
+
+**Offline HTML fixtures** — snapshot NHS pages for fast, deterministic testing without network calls.
 
 ## Requirements
 
