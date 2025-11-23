@@ -257,25 +257,19 @@ npm test
 
 ## Future Enhancements
 
-**API ingestion** (if NHS provides one) — replace scraping entirely for faster, cleaner, schema-stable data.
+1. **Use an API if NHS ever exposes one** – HTML scraping works, but an API would give faster, cleaner, and more stable data.
+2. **Trim page loads** – Block images, fonts, and other non-essential assets to reduce load times. For a crawler that opens hundreds of pages, this adds up quickly.
+3. **Smarter topic crawling** – Right now each topic opens its own page. Reusing a single tab per medicine or batching topic fetches would cut overhead.
+4. **Stream results to disk** – Instead of holding the entire dataset in memory, write out each medicine as it's scraped. This keeps memory usage predictable for larger runs.
+5. **More defensive selectors** – NHS content layouts vary. Adding fallback selectors and small structural heuristics would make the scraper more tolerant to layout changes.
+6. **Command-line flags** – A small CLI for things like `--limit`, `--concurrency`, and `--output` would make the tool easier to use without editing source files.
+7. **Incremental mode** – Compare scraped pages to previous runs and only refresh medicines that changed since the last scrape.
+8. **robots.txt / ToS checks** – Before any scheduled or automated runs, confirm that the site’s scraping rules still allow the tool to operate.
+9. **Scheduled runs** – Add a simple CI workflow that runs the scraper periodically and opens PRs with any changes.
+10. **Section cleanup** – Normalize NHS section titles into a consistent internal schema so downstream consumers don’t need to handle dozens of slight variations.
+11. **Broader coverage** – Include additional NHS sections (pregnancy, interactions, FAQs) by expanding the list of topics to extract.
+12. **Offline fixtures for testing** – Save a handful of HTML snapshots and run tests against those instead of hitting the live NHS site every time.
 
-**Request interception** — block images, fonts, and analytics to cut page load time dramatically.
-
-**Smarter topic navigation** — reuse a single page instance or parallelize topic fetches within a safe concurrency cap.
-
-**CLI configuration** — add flags (--limit, --concurrency, --output, --headless) instead of editing constants.
-
-**Incremental mode** — re-scrape only medicines whose content or review dates changed.
-
-**robots.txt & ToS checks** — automatic compliance before running.
-
-**CI pipeline** — scheduled runs with automated PRs showing diffs.
-
-**Normalization pass** — optional post-processing to map NHS-specific section titles into a canonical schema.
-
-**Broader topic coverage** — include additional sections (pregnancy, interactions, FAQs) by expanding the priority list.
-
-**Offline HTML fixtures** — snapshot NHS pages for fast, deterministic testing without network calls.
 
 ## Requirements
 
